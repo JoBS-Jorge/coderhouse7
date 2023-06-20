@@ -1,19 +1,27 @@
 const meuArrayDoencas = []
 
 class DoencaRara {
-    constructor (cid, nome, temTratamento){
+    constructor (cid, nome, criticidade, temTratamento){
         this.cid = cid;
         this.nome = nome;
+        this.criticidade = criticidade;
         this.temTratamento = temTratamento;
     }
 }
+
+
+meuArrayDoencas.push(new DoencaRara("1122" , "Lupus" , 2 , true))
+meuArrayDoencas.push(new DoencaRara("2233" , "Angioedema" , 3 , true))
+meuArrayDoencas.push(new DoencaRara("6644", "Esclerose Lateral Amiotrófica" , 1 , false))
+meuArrayDoencas.push(new DoencaRara("884544", "HPTEC" , 1 , false))
 
 function incluirDoenca(){
     let resposta = "Doença Incluída!"
     let novaDoenca = {
         cid: prompt("Digite o CID"),
         nome: prompt("Qual o nome da Doença Rara?"),
-        temTratamento: prompt("Possui Tratamento? (Sim ou não)").toUpperCase()
+        criticidade: Number(prompt("Defina a criticidade da doença (de 1 a 5).")),
+        temTratamento: prompt("Possui Tratamento? (Sim ou não)").toUpperCase(),
     }
 
     let validacao = true
@@ -22,7 +30,7 @@ function incluirDoenca(){
     } else {
         validacao = false
     }
-    let newDoenca = new DoencaRara(novaDoenca.cid , novaDoenca.nome , validacao)
+    let newDoenca = new DoencaRara(novaDoenca.cid , novaDoenca.nome , novaDoenca.criticidade , validacao)
     
     meuArrayDoencas.push(newDoenca)
 
@@ -37,6 +45,7 @@ meuBotao.addEventListener("click", () => {
     console.log(meuArrayDoencas)
 });
 document.body.appendChild(meuBotao);
+
 
 
 
